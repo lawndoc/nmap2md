@@ -2,20 +2,29 @@
 
 A little utility to convert nmap XML results to markdown tables.
 
+## Install
+
+Git clone and install to `/usr/local/bin/`
+
+```
+sudo git clone https://github.com/lawndoc/nmap2md /usr/local/src/nmap2md
+sudo ln -s /usr/local/src/nmap2md/nmap2md.py /usr/local/bin/nmap2md
+```
+
 ## Usage
 
-Download application, you can use git for it:
-
 ```
-git clone git@github.com:vdjagilev/nmap2md.git
-cd nmap2md
+nmap -A -oX - | nmap2md
 ```
 
-Example which parses nmap XML and outputs Markdown tables
+Returns the below output:
 
-```
-./nmap2md.py test.xml
-```
+#### 192.168.160.244
+
+| Port | State | Service | Version |
+|------|-------|---------|---------|
+| 22/tcp | open | ssh | OpenSSH 8.9p1 Ubuntu 3 |
+| 80/tcp | open | http | Apache httpd 2.4.52 |
 
 ## Options
 
@@ -41,25 +50,19 @@ Columns and row cells definition should be divided by `,`.
 * `--print-empty` some port scanning results are empty and those are not displayed. However if there is a need to print empty sets, this option allows this.
     * Default: False
 
-## Output example
+## Additional Example
 
-An example with many options and MD support in table cells (service values are *italic*).
-XML file was taken from https://nmap.org/book/output-formats-xml-output.html and this command was used:
+Use ProjectDiscovery.io tools to perform initial host + service discovery quickly and export the results to Markdown
 
 ```
-./nmap2md.py test.xml -c "Port,State,Service,Version" --hs 4 --rc "[port.number]/[port.protocol],[state],*[service.name]*,[service.product] [service.version]"
+mapcidr -cl 192.168.0.0/16 | naabu -sn | naabu -tp 100 -Pn -nmap-cli 'nmap -A -oX -' | nmap2md
 ```
-
-#### 74.207.244.221
-
-| Port | State | Service | Version |
-|------|-------|---------|---------|
-| 22/tcp | open | *ssh* | OpenSSH 5.3p1 Debian 3ubuntu7 |
-| 80/tcp | open | *http* | Apache httpd 2.2.14 |
 
 ## Contributors
 
+This project was originally created by [Vsevolod Djagilev](https://github.com/vdjagilev)
+
 Thanks to the listed contributors for fixing bugs/testing & adding new features:
 
-* Brandon Hinkel (https://github.com/b4ndit)
-* initinfosec (https://github.com/initinfosec)
+* [Brandon Hinkel](https://github.com/b4ndit)
+* [initinfosec](https://github.com/initinfosec)
