@@ -225,6 +225,8 @@ if __name__ == "__main__":
 
         if ports:
             for port in ports.findall("port"):
+                if port.find("state").get("state") != "open":
+                    continue
                 cells = []
 
                 for rc in row_cells:
