@@ -5,7 +5,7 @@ import sys
 import xml.etree.ElementTree as ET
 from optparse import OptionParser
 
-__version__ = "1.3.0"
+__version__ = "1.3.1"
 
 definition = dict(
     port={
@@ -198,11 +198,15 @@ if __name__ == "__main__":
 
     try:
         tree = ET.parse(args[0])
+        tree = tree.getroot()
     except IndexError:
-        print("[Err] No filename supplied as an argument")
-        print()
-        parser.print_help()
-        sys.exit()
+        try:
+            tree = ET.fromstring(sys.stdin.read())
+        except:
+            print("[Err] No filename supplied as an argument")
+            print()
+            parser.print_help()
+            sys.exit()
     except IOError:
         print("[Err] Non-readable or non-existent file supplied as an argument")
         print()
@@ -212,7 +216,7 @@ if __name__ == "__main__":
         print()
         sys.exit()
 
-    for host in tree.getroot().findall("host"):
+    for host in tree.findall("host"):
         address = host.find("address").attrib["addr"]
         port_info = []
         ports = host.find("ports")
