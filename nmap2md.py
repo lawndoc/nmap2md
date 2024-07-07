@@ -202,7 +202,7 @@ if __name__ == "__main__":
     except IndexError:
         try:
             stdinXml = sys.stdin.read()
-            stdinXml = stdinXml[stdinXml.index("<?xml")]
+            stdinXml = stdinXml[stdinXml.index("<?xml"):]
             tree = ET.fromstring(stdinXml)
         except:
             print("[Err] No filename supplied as an argument")
