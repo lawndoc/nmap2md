@@ -17,6 +17,46 @@ Returns the below output:
 | 22/tcp | open | ssh | OpenSSH 8.9p1 Ubuntu 3 |
 | 80/tcp | open | http | Apache httpd 2.4.52 |
 
+## Additional Example
+
+Use ProjectDiscovery.io tools to perform initial host + service discovery quickly and export the results to Markdown
+
+```
+mapcidr -cl 192.168.0.0/16 | naabu -sn | naabu -tp 100 -Pn -nmap-cli 'nmap -A -oX -' | nmap2md
+```
+
+Returns the below output:
+
+#### 192.168.160.242
+
+| Port | State | Service | Version |
+|------|-------|---------|---------|
+| 110/tcp | open | pop3 | hMailServer pop3d  |
+| 135/tcp | open | msrpc | Microsoft Windows RPC  |
+| 139/tcp | open | netbios-ssn | Microsoft Windows netbios-ssn  |
+| 143/tcp | open | imap | hMailServer imapd  |
+| 25/tcp | open | smtp | hMailServer smtpd  |
+| 445/tcp | open | microsoft-ds |   |
+| 587/tcp | open | smtp | hMailServer smtpd  |
+| 80/tcp | open | http | Microsoft IIS httpd 10.0 |
+
+#### 192.168.160.244
+
+| Port | State | Service | Version |
+|------|-------|---------|---------|
+| 22/tcp | open | ssh | OpenSSH 8.9p1 Ubuntu 3 |
+| 80/tcp | open | http | Apache httpd 2.4.52 |
+
+
+#### 192.168.160.250
+
+| Port | State | Service | Version |
+|------|-------|---------|---------|
+| 135/tcp | open | msrpc | Microsoft Windows RPC  |
+| 139/tcp | open | netbios-ssn | Microsoft Windows netbios-ssn  |
+| 3389/tcp | open | ms-wbt-server |   |
+| 445/tcp | open | microsoft-ds |   |
+
 ## Install
 
 Git clone and install to `/usr/local/bin/`
@@ -49,14 +89,6 @@ Columns and row cells definition should be divided by `,`.
     * `asc` & `desc` options, if none is provided: `asc` by default
 * `--print-empty` some port scanning results are empty and those are not displayed. However if there is a need to print empty sets, this option allows this.
     * Default: False
-
-## Additional Example
-
-Use ProjectDiscovery.io tools to perform initial host + service discovery quickly and export the results to Markdown
-
-```
-mapcidr -cl 192.168.0.0/16 | naabu -sn | naabu -tp 100 -Pn -nmap-cli 'nmap -A -oX -' | nmap2md
-```
 
 ## Contributors
 
