@@ -5,7 +5,7 @@ import sys
 import xml.etree.ElementTree as ET
 from optparse import OptionParser
 
-__version__ = "1.3.1"
+__version__ = "1.3.2"
 
 definition = dict(
     port={
@@ -201,7 +201,9 @@ if __name__ == "__main__":
         tree = tree.getroot()
     except IndexError:
         try:
-            tree = ET.fromstring(sys.stdin.read())
+            stdinXml = sys.stdin.read()
+            stdinXml = stdinXml[stdinXml.index("<?xml")]
+            tree = ET.fromstring(stdinXml)
         except:
             print("[Err] No filename supplied as an argument")
             print()
