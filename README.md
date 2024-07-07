@@ -2,15 +2,6 @@
 
 A little utility to convert nmap XML results to markdown tables.
 
-## Install
-
-Git clone and install to `/usr/local/bin/`
-
-```
-sudo git clone https://github.com/lawndoc/nmap2md /usr/local/src/nmap2md
-sudo ln -s /usr/local/src/nmap2md/nmap2md.py /usr/local/bin/nmap2md
-```
-
 ## Usage
 
 ```
@@ -25,6 +16,15 @@ Returns the below output:
 |------|-------|---------|---------|
 | 22/tcp | open | ssh | OpenSSH 8.9p1 Ubuntu 3 |
 | 80/tcp | open | http | Apache httpd 2.4.52 |
+
+## Install
+
+Git clone and install to `/usr/local/bin/`
+
+```
+sudo git clone https://github.com/lawndoc/nmap2md /usr/local/src/nmap2md
+sudo ln -s /usr/local/src/nmap2md/nmap2md.py /usr/local/bin/nmap2md
+```
 
 ## Options
 
