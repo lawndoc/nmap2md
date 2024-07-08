@@ -31,14 +31,15 @@ Returns the below output:
 
 | Port | State | Service | Version |
 |------|-------|---------|---------|
+| 25/tcp | open | smtp | hMailServer smtpd  |
+| 80/tcp | open | http | Microsoft IIS httpd 10.0 |
 | 110/tcp | open | pop3 | hMailServer pop3d  |
 | 135/tcp | open | msrpc | Microsoft Windows RPC  |
 | 139/tcp | open | netbios-ssn | Microsoft Windows netbios-ssn  |
 | 143/tcp | open | imap | hMailServer imapd  |
-| 25/tcp | open | smtp | hMailServer smtpd  |
 | 445/tcp | open | microsoft-ds |   |
 | 587/tcp | open | smtp | hMailServer smtpd  |
-| 80/tcp | open | http | Microsoft IIS httpd 10.0 |
+
 
 #### 192.168.160.244
 
@@ -54,8 +55,8 @@ Returns the below output:
 |------|-------|---------|---------|
 | 135/tcp | open | msrpc | Microsoft Windows RPC  |
 | 139/tcp | open | netbios-ssn | Microsoft Windows netbios-ssn  |
-| 3389/tcp | open | ms-wbt-server |   |
 | 445/tcp | open | microsoft-ds |   |
+| 3389/tcp | open | ms-wbt-server |   |
 
 ## Install
 
