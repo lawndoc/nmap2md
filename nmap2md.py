@@ -224,7 +224,7 @@ if __name__ == "__main__":
         port_info.sort(key=lambda port_num: list(map(int, re.findall(r'\d+', port_num[0])))[0])
         result[address] = port_info
 
-    result.sort(key=lambda address: address[0])
+    result = OrderedDict(sorted(result.items(), key=lambda address: address[0]))
     # Start converting data to Markdown
     for address in result:
         if not options.print_empty and len(result[address]) == 0:
