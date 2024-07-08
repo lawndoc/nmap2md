@@ -6,7 +6,7 @@ import sys
 import xml.etree.ElementTree as ET
 from optparse import OptionParser
 
-__version__ = "1.3.2"
+__version__ = "1.3.3"
 
 definition = dict(
     port={

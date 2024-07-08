@@ -1,6 +1,23 @@
 Changelog
 =========
 
+## v1.3.3
+
+* Sort by IP and port in output
+* Only output open ports
+
+## v1.3.2
+
+* Bug fix: error when input begins with non-XML text
+
+## v1.3.1
+
+* Accept XML from stdin
+
+## v1.3.0
+
+* Combine code into a single script
+
 ## v1.2.1
 
 * README fixes & improvements
