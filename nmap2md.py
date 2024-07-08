@@ -149,40 +149,12 @@ if __name__ == "__main__":
         action="store_true",
         help="should addresses with no opened ports to be printed"
     )
-    parser.add_option(
-        "--sort",
-        default="Port;asc",
-        help="Sort results by provided row cell"
-    )
     parser.set_defaults(print_empty=False)
 
     (options, args) = parser.parse_args()
 
     columns = options.columns.split(",")
     row_cells = options.rc.split(",")
-
-    sorting = options.sort.split(";")
-    sorting_reverse = False
-
-    if len(sorting) == 2:
-        try:
-            if sorting[1] == 'desc':
-                sorting_reverse = True
-        except IndexError:
-            print("[Err] Could not get sorting direction")
-            print()
-            sys.exit()
-
-    try:
-        sorting_index = columns.index(sorting[0])
-    except ValueError:
-        print("[Err] Please provide existing column")
-        print()
-        sys.exit()
-    except IndexError:
-        print("[Err] No sorting value defined")
-        print()
-        sys.exit()
 
     definitions = Element.build(definition)
     result = {}
@@ -248,6 +220,7 @@ if __name__ == "__main__":
 
                 port_info.append(cells)
 
+        port_info.sort(key=lambda port_num: list(map(int, re.findall(r'\d+', port_num[0])))[0])
         result[address] = port_info
 
     # Start converting data to Markdown
@@ -264,12 +237,6 @@ if __name__ == "__main__":
         # Adding +2 for 1 space on left and right sides
         md += "|%s|" % "|".join(map(lambda s: '-' * (len(s) + 2), columns))
         md += "\n"
-
-        result[address] = sorted(
-            result[address],
-            key=lambda row: row[sorting_index],
-            reverse=sorting_reverse
-        )
 
         for port_info in result[address]:
             md += "| %s |" % " | ".join(port_info)
