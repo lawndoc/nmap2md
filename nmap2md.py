@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from collections import OrderedDict
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -157,7 +158,7 @@ if __name__ == "__main__":
     row_cells = options.rc.split(",")
 
     definitions = Element.build(definition)
-    result = {}
+    result = OrderedDict()
     md = ""
 
     if len(columns) != len(row_cells):
