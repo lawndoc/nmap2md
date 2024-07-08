@@ -5,7 +5,7 @@ A little utility to convert nmap XML results to markdown tables.
 ## Usage
 
 ```
-nmap -A -oX - | nmap2md
+nmap -A -oX - 192.168.160.244 | nmap2md
 ```
 
 Returns the below output:
